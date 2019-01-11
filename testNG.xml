@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name = "Suite" parallel = "tests" thread-count="2">
+	<parameter name = "userName" value="18859218264" />
+	<parameter name= "passWord" value="5509945cyp"></parameter>
+   <test name="Test2">
+	<!--  <listeners>
+		<listener class-name="com.erin.selenium.util.RetryListener" />
+		<listener class-name="com.erin.selenium.util.TestNGListenerScreen" />
+	</listeners>
+	-->
+	<classes>
+		<class name = "com.erin.selenium.testCase.login" />
+	</classes>
+   </test>
+
+</suite>

@@ -12,12 +12,15 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DriverBase {
 	public WebDriver driver;
 	public DriverBase(String browser) {
 		SelectDriver selectDriver = new SelectDriver();
 		this.driver = selectDriver.driverName(browser);
+		
 	}
 	
 	/*
@@ -32,6 +35,7 @@ public class DriverBase {
 		System.out.println("stop webDriver");
 		driver.close();
 	}
+	
 	
 	/**
 	 * 封装Element方法
@@ -77,4 +81,31 @@ public class DriverBase {
 	public void get(String url) {
 		driver.get(url);
 	}
+	
+	/*
+	 * 返回
+	 */
+	
+	public void back() {
+		driver.navigate().back();
+	}
+	
+	/*
+	 * 窗口最大化
+	 */
+	public void winMax() {
+		driver.manage().window().maximize();
+	}
+	
+	/*
+	 * 显式等待
+	 */
+	public WebElement WebDriverWait(int second,By element) {
+		System.out.println(element);
+		WebDriverWait wait = new WebDriverWait((WebDriver) driver,second);
+		WebElement result = wait.until(ExpectedConditions.presenceOfElementLocated(element));
+		return result;
+	}
+
+	
 }

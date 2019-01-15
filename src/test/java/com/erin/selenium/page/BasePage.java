@@ -1,8 +1,10 @@
-package com.erin.selenium.base;
+package com.erin.selenium.page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.erin.selenium.base.DriverBase;
 
 import chen.testDemo.ProUtil;
 /**
@@ -23,6 +25,16 @@ public class BasePage {
 		WebElement element = driver1.findElement(by);
 		return element;
 	}
+	
+	/*
+	 * 层级定位，通过父节点定位到子节点，
+	 * 需要传入父节点和子节点的BY
+	 */
+	public WebElement nodeElement(By by,By nodrby) {
+		WebElement el = this.element(by);
+		return el.findElement(nodrby);
+	}
+	
 	
 	/**
 	 * 封装点击
@@ -67,7 +79,6 @@ public class BasePage {
 	 * 是否选中
 	 */
 	
-	
 	public By byStr(String username) {
 		ProUtil proUtil = new ProUtil("element.properties");
 		String locator =  proUtil.getPro(username);
@@ -82,13 +93,20 @@ public class BasePage {
 		}else if(locatorType.equals("tagName")) {
 			return By.tagName(locatorValue);
 		}
-		else if(locatorType.equals("linkTetx")) {
+		else if(locatorType.equals("linkText")) {
 			return By.linkText(locatorValue);
 		}else {
 			return By.xpath(locatorValue);
 		}
 	}
 	
+	/*
+	 * 获取文本信息
+	 */
+	public String getText(WebElement element) {
+		return element.getText();
+	}
+
 }
 
 

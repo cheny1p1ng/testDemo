@@ -1,6 +1,8 @@
-package com.erin.selenium.base;
+package com.erin.selenium.page;
 
 import org.openqa.selenium.WebElement;
+
+import com.erin.selenium.base.DriverBase;
 /**
  * 获取元素
  */

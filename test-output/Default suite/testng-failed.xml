@@ -5,7 +5,9 @@
     <classes>
       <class name="com.erin.selenium.testCase.login">
         <methods>
-          <include name="downOrder"/>
+          <include name="TestAddCart"/>
+          <include name="TestGoPay"/>
+          <include name="TestSureOrder"/>
           <include name="getLoginHome"/>
           <include name="testLogin"/>
         </methods>

@@ -20,7 +20,6 @@ public class DriverBase {
 	public DriverBase(String browser) {
 		SelectDriver selectDriver = new SelectDriver();
 		this.driver = selectDriver.driverName(browser);
-		
 	}
 	
 	/*
@@ -106,6 +105,23 @@ public class DriverBase {
 		WebElement result = wait.until(ExpectedConditions.presenceOfElementLocated(element));
 		return result;
 	}
-
+	/*
+	 * 切换windows窗口
+	 */
+	public void switchWindows(String name) {
+		driver.switchTo().window(name);
+	}
+	/*
+	 * 切换alert窗口
+	 */
+	public void switchAlert() {
+		driver.switchTo().alert();
+	}
+	/*
+	 * 模态框切换。自己写的
+	 */
+	public void switchToMode() {
+		driver.switchTo().activeElement();
+	}
 	
 }

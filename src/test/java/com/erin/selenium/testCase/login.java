@@ -8,17 +8,27 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.erin.selenium.base.BasePage;
 import com.erin.selenium.base.DriverBase;
+import com.erin.selenium.business.CoursePagePro;
 import com.erin.selenium.business.LoginPro;
+import com.erin.selenium.business.OrderPayPagePro;
+import com.erin.selenium.business.SureOrderPagePro;
+import com.erin.selenium.page.BasePage;
+import com.erin.selenium.util.SendEmail;
 
 public class login extends CaseBase{
 	public DriverBase driver;
 	public LoginPro loginpro;
+	public CoursePagePro cpp;
+	public SureOrderPagePro sopp;
+	public OrderPayPagePro opp;
 	static Logger logger = Logger.getLogger(login.class);//log4j引用
 	public login() {
 		this.driver = InitDriver("chrome");
 		loginpro = new LoginPro(driver);
+		cpp= new CoursePagePro(driver);
+		sopp = new SureOrderPagePro(driver);
+		opp = new OrderPayPagePro(driver);
 	}
 	 
 	@Test
@@ -36,7 +46,55 @@ public class login extends CaseBase{
 	public void testLogin() {
 		logger.debug("登录开始-------------------------");
 		loginpro.login("18859218264", "5509945cyp");
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		driver.winMax();
+		driver.findElement(By.linkText("实战课程")).click();
+		driver.findElement(By.className("shizan-name")).click();
+		//driver.get("https://coding.imooc.com/class/309.html");
 	}
+	
+	
+	/*
+	 *  立即购买
+	 */
+	@Test(dependsOnMethods= {"testLogin"})
+	public void TestAddCart() {
+		cpp.buyNow();
+	}
+	/*
+	 * 提交订单
+	 */
+	@Test(dependsOnMethods= {"TestAddCart"})
+	public void TestSureOrder() {
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		sopp.sureOrder();
+	}
+	/*
+	 * 跳转支付页面
+	 */
+	@Test(dependsOnMethods= {"TestSureOrder"})
+	public void TestGoPay() {
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		opp.orderPayPro();
+		SendEmail.sendToEmail("测试结束");
+	}
+	
+
 	
 //	/*
 //	 * 获取课程信息
@@ -48,62 +106,62 @@ public class login extends CaseBase{
 	/*
 	 * 下单流程
 	 */
-	public void buyCourse() {
-		driver.get("https://coding.imooc.com/class/309.html");
-		String courseDetial =	driver.findElement(By.className("path")).findElement(By.tagName("span")).getText();
-		driver.findElement(By.id("buy-trigger")).click();
-		this.testLogin();
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		driver.findElement(By.id("buy-trigger")).click();
-		driver.findElement(By.linkText("提交订单")).click();
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		String orderText =  driver.findElement(By.className("order")).getText();
-		if(orderText !=null) {
-			String orderString = driver.findElement(By.className("item")).findElement(By.className("left")).findElement(By.tagName("dt")).getText();
-			Assert.assertEquals(courseDetial, orderString,"购买的商品信息不一致");
-		}
-		driver.stop();	
-	}
+//	public void buyCourse() {
+//		driver.get("https://coding.imooc.com/class/309.html");
+//		String courseDetial =	driver.findElement(By.className("path")).findElement(By.tagName("span")).getText();
+//		driver.findElement(By.id("buy-trigger")).click();
+//		this.testLogin();
+//		try {
+//			Thread.sleep(2000);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+//		driver.findElement(By.id("buy-trigger")).click();
+//		driver.findElement(By.linkText("提交订单")).click();
+//		try {
+//			Thread.sleep(2000);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+//		String orderText =  driver.findElement(By.className("order")).getText();
+//		if(orderText !=null) {
+//			String orderString = driver.findElement(By.className("item")).findElement(By.className("left")).findElement(By.tagName("dt")).getText();
+//			Assert.assertEquals(courseDetial, orderString,"购买的商品信息不一致");
+//		}
+//		driver.stop();	
+//	}
 	
 	
-	/*
-	 * 下单流程
-	 */
-	@Test (dependsOnMethods= {"testLogin"})
-	public void downOrder() {
-		driver.get("https://coding.imooc.com/class/309.html");
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		this.buyCourseNow();
-		this.testLogin();
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		String currentText = this.buyCourseNow();
-		System.out.println("当前课程信息："+currentText);
-		this.sureOrder();
-		this.getOrder();
-		String orderCourseText = this.getOrderCourse();
-		System.out.println("订单页面课程信息"+orderCourseText);
-		if (currentText.equals(orderCourseText)) {
-			System.out.println("下单成功");
-		}
-	}
+//	/*
+//	 * 下单流程
+//	 */
+//	@Test (dependsOnMethods= {"testLogin"})
+//	public void downOrder() {
+//		driver.get("https://coding.imooc.com/class/309.html");
+//		try {
+//			Thread.sleep(2000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		this.buyCourseNow();
+//		this.testLogin();
+//		try {
+//			Thread.sleep(2000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		String currentText = this.buyCourseNow();
+//		System.out.println("当前课程信息："+currentText);
+//		this.sureOrder();
+//		this.getOrder();
+//		String orderCourseText = this.getOrderCourse();
+//		System.out.println("订单页面课程信息"+orderCourseText);
+//		if (currentText.equals(orderCourseText)) {
+//			System.out.println("下单成功");
+//		}
+//	}
 	
 	
 	/*

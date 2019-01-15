@@ -27,5 +27,8 @@
 	<classpathentry kind="lib" path="G:/学习/类库/seleniumJars/jars/libs/commons-io-2.4.jar"/>
 	<classpathentry kind="lib" path="C:/Users/84112/eclipse-workspace/testDemo/lib/saxon-8.7.jar"/>
 	<classpathentry kind="lib" path="C:/Users/84112/eclipse-workspace/testDemo/lib/SaxonLiaison.jar"/>
+	<classpathentry kind="lib" path="G:/学习/类库/activation-1.1.jar"/>
+	<classpathentry kind="lib" path="G:/学习/类库/commons-email-1.1.jar"/>
+	<classpathentry kind="lib" path="G:/学习/类库/java-mail-1.4.4.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

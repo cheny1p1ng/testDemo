@@ -1,7 +1,7 @@
 package com.erin.selenium.handle;
 
 import com.erin.selenium.base.DriverBase;
-import com.erin.selenium.base.loginPage;
+import com.erin.selenium.page.loginPage;
 /**
  * 操作层
  */

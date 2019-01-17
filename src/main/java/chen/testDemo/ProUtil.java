@@ -49,6 +49,12 @@ public class ProUtil {
 		
 		
 	}
+
+	public void writePro(String name, String value) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 //	public static void main(String[] args) throws Exception{
 //		ProUtil pro = new ProUtil();

@@ -6,13 +6,18 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.beust.jcommander.Parameter;
 import com.erin.selenium.base.DriverBase;
 import com.erin.selenium.business.CoursePagePro;
+import com.erin.selenium.business.HomePagePro;
 import com.erin.selenium.business.LoginPro;
 import com.erin.selenium.business.OrderPayPagePro;
 import com.erin.selenium.business.SureOrderPagePro;
+import com.erin.selenium.handle.HomePageHandle;
 import com.erin.selenium.page.BasePage;
 import com.erin.selenium.util.SendEmail;
 
@@ -20,13 +25,16 @@ public class login extends CaseBase{
 	public DriverBase driver;
 	public LoginPro loginpro;
 	public CoursePagePro cpp;
+	public HomePagePro hph;
 	public SureOrderPagePro sopp;
 	public OrderPayPagePro opp;
 	static Logger logger = Logger.getLogger(login.class);//log4j引用
-	public login() {
+	@BeforeClass
+	public void loginTest() {
 		this.driver = InitDriver("chrome");
 		loginpro = new LoginPro(driver);
 		cpp= new CoursePagePro(driver);
+		hph= new HomePagePro(driver);
 		sopp = new SureOrderPagePro(driver);
 		opp = new OrderPayPagePro(driver);
 	}
@@ -43,9 +51,10 @@ public class login extends CaseBase{
 	}
 	
 	@Test (dependsOnMethods = {"getLoginHome"})
-	public void testLogin() {
+	@Parameters({"userName","passWord"})
+	public void testLogin(String userName,String passWord) {
 		logger.debug("登录开始-------------------------");
-		loginpro.login("18859218264", "5509945cyp");
+		loginpro.login(userName, passWord);
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {

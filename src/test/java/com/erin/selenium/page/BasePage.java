@@ -106,6 +106,13 @@ public class BasePage {
 	public String getText(WebElement element) {
 		return element.getText();
 	}
+	
+	/*
+	 * action事件
+	 */
+	public void action(WebElement element) {
+		driver1.action(element);
+	}
 
 }
 

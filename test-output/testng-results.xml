@@ -1,33 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="5" passed="5">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="20981" started-at="2019-01-15T08:43:48Z" finished-at="2019-01-15T08:44:09Z">
+  <suite name="Suite" duration-ms="11374" started-at="2019-01-16T08:35:29Z" finished-at="2019-01-16T08:35:40Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="20981" started-at="2019-01-15T08:43:48Z" finished-at="2019-01-15T08:44:09Z">
-      <class name="com.erin.selenium.testCase.login">
-        <test-method status="PASS" signature="getLoginHome()[pri:0, instance:com.erin.selenium.testCase.login@27406a17]" name="getLoginHome" duration-ms="5282" started-at="2019-01-15T08:43:48Z" finished-at="2019-01-15T08:43:54Z">
+    <test name="Test1" duration-ms="11374" started-at="2019-01-16T08:35:29Z" finished-at="2019-01-16T08:35:40Z">
+      <class name="com.erin.selenium.testCase.SuiteTestBuy">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:com.erin.selenium.testCase.SuiteTestBuy@343f4d3d]" name="beforeClass" is-config="true" duration-ms="9183" started-at="2019-01-16T08:35:29Z" finished-at="2019-01-16T08:35:38Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- getLoginHome -->
-        <test-method status="PASS" signature="testLogin()[pri:0, instance:com.erin.selenium.testCase.login@27406a17]" name="testLogin" duration-ms="9515" started-at="2019-01-15T08:43:54Z" depends-on-methods="com.erin.selenium.testCase.login.getLoginHome" finished-at="2019-01-15T08:44:03Z">
+        </test-method> <!-- beforeClass -->
+        <test-method status="PASS" signature="testBuy()[pri:0, instance:com.erin.selenium.testCase.SuiteTestBuy@343f4d3d]" name="testBuy" duration-ms="2173" started-at="2019-01-16T08:35:38Z" finished-at="2019-01-16T08:35:40Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testLogin -->
-        <test-method status="PASS" signature="TestAddCart()[pri:0, instance:com.erin.selenium.testCase.login@27406a17]" name="TestAddCart" duration-ms="1186" started-at="2019-01-15T08:44:03Z" depends-on-methods="com.erin.selenium.testCase.login.testLogin" finished-at="2019-01-15T08:44:04Z">
+        </test-method> <!-- testBuy -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.erin.selenium.testCase.SuiteTestBuy@343f4d3d]" name="afterClass" is-config="true" duration-ms="0" started-at="2019-01-16T08:35:40Z" finished-at="2019-01-16T08:35:40Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TestAddCart -->
-        <test-method status="PASS" signature="TestSureOrder()[pri:0, instance:com.erin.selenium.testCase.login@27406a17]" name="TestSureOrder" duration-ms="2088" started-at="2019-01-15T08:44:04Z" depends-on-methods="com.erin.selenium.testCase.login.TestAddCart" finished-at="2019-01-15T08:44:06Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- TestSureOrder -->
-        <test-method status="PASS" signature="TestGoPay()[pri:0, instance:com.erin.selenium.testCase.login@27406a17]" name="TestGoPay" duration-ms="2877" started-at="2019-01-15T08:44:06Z" depends-on-methods="com.erin.selenium.testCase.login.TestSureOrder" finished-at="2019-01-15T08:44:09Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- TestGoPay -->
-      </class> <!-- com.erin.selenium.testCase.login -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+        </test-method> <!-- afterClass -->
+      </class> <!-- com.erin.selenium.testCase.SuiteTestBuy -->
+    </test> <!-- Test1 -->
+  </suite> <!-- Suite -->
 </testng-results>

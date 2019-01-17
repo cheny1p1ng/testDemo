@@ -6,10 +6,10 @@
 <fileset dir= "${lib.dir}" includes= "*.jar" />
 </path>
 <target name= "transform" >
-<xslt in= "C:/Users/84112/eclipse-workspace/testDemo/test-output/testng-results.xml" style= "C:/Users/84112/eclipse-workspace/testDemo/test-output/testng-results.xsl"
-out= "C:\Users\84112\eclipse-workspace\testDemo\test-output\TestReport\index1.html" >
+<xslt in= "G:/eclipse-workspace/testDemo/test-output/testng-results.xml" style= "G:/eclipse-workspace/testDemo/test-output/testng-results.xsl"
+out= "G:\eclipse-workspace\testDemo\test-output\TestReport\index1.html" >
 <!-- you need to specify the directory here again -->
-<param name= "testNgXslt.outputDir" expression= "C:\Users\84112\eclipse-workspace\testDemo\test-output\TestReport" />
+<param name= "testNgXslt.outputDir" expression= "G:\eclipse-workspace\testDemo\test-output\TestReport" />
 <classpath refid= "test.classpath" />
 </xslt>
 </target>

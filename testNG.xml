@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name = "Suite" parallel = "tests" thread-count="2">
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name = "Suite" parallel = "classes" thread-count="2"><!-- 第一个测试名字，是否支持多线程（默认是false），线程数 -->
 	<parameter name = "userName" value="18859218264" />
 	<parameter name= "passWord" value="5509945cyp"></parameter>
-   <test name="Test2">
+   <test name="Test1">
 	<!--  <listeners>
 		<listener class-name="com.erin.selenium.util.RetryListener" />
 		<listener class-name="com.erin.selenium.util.TestNGListenerScreen" />
 	</listeners>
 	-->
 	<classes>
-		<class name = "com.erin.selenium.testCase.login" />
+	<!--	<class name = "com.erin.selenium.testCase.login" />  运行的类 -->
+		<class name = "com.erin.selenium.testCase.SuiteTestBuy" /> 
+	</classes>
+   </test><!-- 多线程 -->
+ <!--    <test name="Test2">
+	 <listeners>
+		<listener class-name="com.erin.selenium.util.RetryListener" />
+		<listener class-name="com.erin.selenium.util.TestNGListenerScreen" />
+	</listeners>
+	
+	<classes>
+		<class name = "com.erin.selenium.testCase.testCourseList" /> 
 	</classes>
    </test>
-
+-->
 </suite>

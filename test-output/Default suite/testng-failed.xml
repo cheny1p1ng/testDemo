@@ -8,6 +8,7 @@
           <include name="TestAddCart"/>
           <include name="TestGoPay"/>
           <include name="TestSureOrder"/>
+          <include name="loginTest"/>
           <include name="getLoginHome"/>
           <include name="testLogin"/>
         </methods>

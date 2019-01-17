@@ -5,13 +5,16 @@ import java.io.IOException;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -124,4 +127,31 @@ public class DriverBase {
 		driver.switchTo().activeElement();
 	}
 	
+	/*
+	 * actionMoveElement
+	 */
+	public void action(WebElement element) {
+		Actions actions =new Actions(driver);
+		actions.moveToElement(element).perform();
+	}
+	/*
+	 * 获取cookie
+	 * @return
+	 */
+	public Set<Cookie> getCookie(){
+		Set<Cookie> cookies =driver.manage().getCookies();
+		return cookies;
+	}
+	/*
+	 * 删除cookie
+	 */
+	public void deleteCookie() {
+		driver.manage().deleteAllCookies();
+	}
+	/*
+	 * 设置Cookie
+	 */
+	public void setCookie(Cookie cookie) {
+		driver.manage().addCookie(cookie);
+	}
 }

@@ -29,6 +29,7 @@ public class login extends CaseBase{
 	public SureOrderPagePro sopp;
 	public OrderPayPagePro opp;
 	static Logger logger = Logger.getLogger(login.class);//log4j引用
+	@Parameters("browser") //多浏览器兼容
 	@BeforeClass
 	public void loginTest() {
 		this.driver = InitDriver("chrome");

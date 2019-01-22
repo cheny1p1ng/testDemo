@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="2" guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="classes">
+<suite thread-count="2" guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="tests">
   <parameter name="passWord" value="5509945cyp"/>
   <parameter name="userName" value="18859218264"/>
-  <test thread-count="2" name="Test1(failed)" parallel="classes">
+  <test thread-count="2" name="FirefoxTest(failed)" parallel="tests">
+    <parameter name="browser" value="fireFox"/>
+    <classes>
+      <class name="com.erin.selenium.testCase.SuiteTestBuy">
+        <methods>
+          <include name="afterClass"/>
+          <include name="testBuy"/>
+          <include name="beforeClass"/>
+        </methods>
+      </class> <!-- com.erin.selenium.testCase.SuiteTestBuy -->
+    </classes>
+  </test> <!-- FirefoxTest(failed) -->
+  <test thread-count="2" name="IETest(failed)" parallel="tests">
+    <parameter name="browser" value="chrome"/>
     <classes>
       <class name="com.erin.selenium.testCase.login">
         <methods>
@@ -16,5 +29,5 @@
         </methods>
       </class> <!-- com.erin.selenium.testCase.login -->
     </classes>
-  </test> <!-- Test1(failed) -->
+  </test> <!-- IETest(failed) -->
 </suite> <!-- Failed suite [Suite] -->
